@@ -212,7 +212,8 @@ Distributed, consistent key-value store for shared configuration and service dis
 * kube-proxy
 
   * Load balancer for the services on that node
-  
+
+
 ---
 
 ### Manifests
