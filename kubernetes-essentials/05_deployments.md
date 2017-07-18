@@ -120,11 +120,12 @@ kubectl get pods
 * **RollingUpdate** is the default strategy.
 * Updates **Pods** one (or a few) at a time.
 * Update the text of the application, creating a new version of the image.
-* Build a new image and tag it with v2.
+* Build a new image and tag it with v2 (or a different tag if you have already used v2).
+* Push the image to the container registry.
 * Update the **Deployment**:
 
 ```
-kubectl set image deployment/hello-node hello-node=hello-node:v2
+kubectl set image deployment/hello-node hello-node=eu.gcr.io/adidas-173709/<HOSTNAME>-hello-node:v2
 ```
 
 ---
