@@ -65,6 +65,14 @@ docker build -t eu.gcr.io/$PROJECT/$HOSTNAME-hello-node:v1 .
 
 ---
 
+### Push the container
+
+```
+gcloud docker -- push eu.gcr.io/$PROJECT/$HOSTNAME-hello-node:v1
+```
+
+---
+
 ### Deploy application
 
 ```
