@@ -141,7 +141,7 @@ sudo apt install apache2-utils
 
 Next, make sure you still have a service that is exposing your pods publicaly. If you don't recreate the service like in the previous exercise.
 
-(Hint use curl to make sure your service is correctly pointing to the pods!)
+_(Hint: use curl to make sure your service is correctly pointing to the pods!)_
 
 Then we can run the following (make sure you replace the public IP and nodeport fields!):
 
