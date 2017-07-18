@@ -60,7 +60,7 @@ ENTRYPOINT ["node", "/server.js"]
 ### Build the container
 
 ```
-docker build -t eu.gcr.io/$PROJECT/$HOSTNAME-hello-node:v1 -f Dockerfile_node .
+docker build -t eu.gcr.io/$PROJECT/$HOSTNAME-hello-node:v1 .
 ```
 
 ---
