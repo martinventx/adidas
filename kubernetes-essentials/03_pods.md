@@ -182,9 +182,9 @@ Hello World!
 ---
 
 ### Do it yourself
-* Create an `nginx.conf` which returns a  
+* Create a new node app that returns the text:
 `200 "From zero to hero"`.
-* Create a custom Nginx image.
+* Create a custom image.
 * Build the container.
 * Create a **Pod** manifest using the image.
 * Query the application using `curl` or a browser.
