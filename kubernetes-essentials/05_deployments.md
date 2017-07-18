@@ -139,10 +139,14 @@ You will need to install ab on your VM with:
 sudo apt install apache2-utils
 ```
 
-Then we can run:
+Next, make sure you still have a service that is exposing your pods publicaly. If you don't recreate the service like in the previous exercise.
+
+(Hint use curl to make sure your service is correctly pointing to the pods!)
+
+Then we can run the following (make sure you replace the public IP and nodeport fields!):
 
 ```
-ab -n 50000 -c 1  $IP:$PORT/
+ab -n 50000 -c 1  <PUBLIC_IP>:<SERVICE_NODEPORT>/
 kubectl get po --watch-only
 ```
 
