@@ -110,7 +110,7 @@ kubectl config view
 
 ### Creating a **Pod** manifest
 
-Explore the `hello-world` **Pod** configuration file:
+Create a new file called `pod.yaml`. Inspect the following Pod definition. Save this inside `pod.yaml`.
 
 Please replace the <HOSTNAME> to be the same as `echo $HOSTNAME`.
 
@@ -135,7 +135,7 @@ spec:
 
 ```bash
 kubectl delete deployment hello-node
-kubectl create -f configs/pod.yaml
+kubectl create -f pod.yaml
 ```
 
 ---
