@@ -68,8 +68,16 @@ kubectl create -f service.yaml
 
 ### Query the **Service**
 
+We will need to get the public IP address of one of the workers to get access to the service. You can do this with the following command:
+
 ```
-curl -i 0.0.0.0:30080
+kubectl get nodes --selector=kubernetes.io/role!=master -o jsonpath={.items[0].status.addresses[?\(@.type==\"ExternalIP\"\)].address}
+```
+
+Then curl that IP address:
+
+```
+curl -i <YOUR_PUBLIC_IP>:30080
 ```
 
 ---
