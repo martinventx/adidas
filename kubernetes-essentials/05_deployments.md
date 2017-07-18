@@ -133,6 +133,14 @@ kubectl set image deployment/hello-node hello-node=hello-node:v2
 
 We can use ab (Apache Benchmark) to generate traffic to our application and then watch for failures. Using `--watch-only` we'll see updates of the pods.
 
+You will need to install ab on your VM with:
+
+```
+sudo apt install apache2-utils
+```
+
+Then we can run:
+
 ```
 ab -n 50000 -c 1  $IP:$PORT/
 kubectl get po --watch-only
@@ -192,12 +200,6 @@ kubectl set image deployment/hello-node hello-node=hello-node:v2
 ---
 
 ### Validate that it works
-
-Generate traffic. `ab` (ApacheBench) is a tool to generate http traffic. You will need to install it on your VM with:
-
-```
-sudo apt install apache2-utils
-```
 
 Then run:
 
