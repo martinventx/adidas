@@ -60,7 +60,7 @@ ENTRYPOINT ["node", "/server.js"]
 ### Build the container
 
 ```
-docker build -t hello-node:v1 -f Dockerfile_node .
+docker build -t eu.gcr.io/$PROJECT/$HOSTNAME-hello-node:v1 -f Dockerfile_node .
 ```
 
 ---
@@ -68,7 +68,7 @@ docker build -t hello-node:v1 -f Dockerfile_node .
 ### Deploy application
 
 ```
-kubectl run hello-node --image=hello-node:v1 --port=8080
+kubectl run hello-node --image=eu.gcr.io/$PROJECT/$HOSTNAME-hello-node:v1 --port=8080
 deployment "hello-node" created
 ```
 
@@ -104,6 +104,8 @@ kubectl config view
 
 Explore the `hello-world` **Pod** configuration file:
 
+Please replace the <HOSTNAME> to be the same as `echo $HOSTNAME`.
+
 ```
 apiVersion: v1
 kind: Pod
@@ -114,7 +116,7 @@ metadata:
 spec:
   containers:
     - name: hello-node
-      image: hello-node:v1
+      image: eu.gcr.io/adidas-173709/<HOSTNAME>-hello-node:v1
       ports:
         - containerPort: 8080
 ```
