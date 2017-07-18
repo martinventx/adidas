@@ -100,40 +100,6 @@ total 0
 ```
 ----
 
-
-### hostPath
-
-* In this excecise we'll demonstrate the usefulness of having a hostPath by mounting a directory and writing to it.
-
-```
-apiVersion: v1
-kind: Pod
-metadata:
-  name: alpine
-spec:
-  containers:
-  - name: alp
-    image: alpine
-    volumeMounts:
-    - name: test
-      mountPath: /tmp
-    command:
-      - sleep
-      - "3600"
-  volumes:
-  - name: test
-    hostPath:
-        path: /tmp
-```
-
-Once the pod has been deployed we can echo a word into a file in that directory and verify it's existence from the host. Since we're running this in minikube the host isn't our host but 
-minikube therefore we'll need to run the command through minikube.
-
-```
-$ kubectl exec -it alpine -- /bin/sh -c "echo 'test' >> /tmp/test.txt" 
-$ minikube ssh cat /tmp/test.txt
-```
-
 ### Persistent Volumes and Claims
 
 * In this exercise we'll demonstrate the use of Persistent Volumes(PV) and Persistent Volume Claims(PVC).
