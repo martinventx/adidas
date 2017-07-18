@@ -30,6 +30,8 @@ A **Deployment** manages **ReplicaSets** and defines how updates to **Pod**s sho
 
 ### Creating a Deployment
 
+Please replace `<HOSTNAME>` the to be the same as `echo $HOSTNAME`.
+
 ```
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -44,7 +46,7 @@ spec:
     spec:
       containers:
       - name: hello-node
-        image: hello-node:v1
+        image: eu.gcr.io/adidas-173709/<HOSTNAME>-hello-node:v1
         ports:
         - containerPort: 8080
 ```
@@ -155,6 +157,8 @@ use `--cascade=false`.
 * Recreate is the alternative update strategy.
 * All existing **Pod**s are killed before new ones are created.
 
+Please replace `<HOSTNAME>` the to be the same as `echo $HOSTNAME`.
+
 ```
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -171,7 +175,7 @@ spec:
     spec:
       containers:   
       - name: hello-node
-        image: hello-node:v1
+        image: eu.gcr.io/adidas-173709/<HOSTNAME>-hello-node:v1
         ports:
         - containerPort: 8080
 ```
@@ -189,7 +193,13 @@ kubectl set image deployment/hello-node hello-node=hello-node:v2
 
 ### Validate that it works
 
-Generate traffic:
+Generate traffic. `ab` (ApacheBench) is a tool to generate http traffic. You will need to install it on your VM with:
+
+```
+sudo apt install apache2-utils
+```
+
+Then run:
 
 ```
 ab -n 50000 -c 1  $IP/$PORT
