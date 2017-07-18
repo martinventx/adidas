@@ -32,7 +32,7 @@ Read the documentation located at: https://microservices-demo.github.io/microser
 
 To start the sock-shop, follow the instructions at: https://microservices-demo.github.io/microservices-demo/deployment/kubernetes-start.html
 
-_Note: You will need to create the namespace `sock-shop`_
+_Note: You will need to create the namespace with `kubectl create namespace sock-shop`_
 
 ---
 
