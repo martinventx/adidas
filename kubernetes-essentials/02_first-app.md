@@ -21,10 +21,9 @@ kubectl get nodes --help
 
 ---
 
-Before we start set up `kubectl` so it uses the supplied training config
+The scrit that created your cluster ran a command to get the configuration and credentials required to access your cluster. It has saved these credentials in `~/.config`, which is the default location that the `kubectl` cli searches for credentials.
 
 ```
-export KUBECONFIG=~/training-config
 kubectl config get-contexts
 CURRENT   NAME                                    CLUSTER                                 AUTHINFO                                NAMESPACE
 *         gke_adam-k8s_europe-west1-b_cluster-1   gke_adam-k8s_europe-west1-b_cluster-1   gke_adam-k8s_europe-west1-b_cluster-1
