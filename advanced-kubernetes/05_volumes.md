@@ -122,6 +122,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
+  storageClassName: training
   gcePersistentDisk:
     pdName: <MY_DISK_NAME>
     fsType: "ext4"
@@ -151,6 +152,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: training
   resources:
     requests:
       storage: 4Gi
