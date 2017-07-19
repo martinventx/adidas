@@ -115,7 +115,7 @@ Create a file called `pv.yaml` with the following contents:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: data
+  name: <MY_PV_NAME>
 spec:
   capacity:
     storage: 5Gi
@@ -127,7 +127,7 @@ spec:
     fsType: "ext4"
 ```
 
-Note that you will need to replace <MY_DISK_NAME> with the name you used in the create command.
+Note that you will need to replace <MY_DISK_NAME> with the name you used in the create command and you should replace <MY_PV_NAME> with the output of `echo pv-$HOSTNAME`.
 
 ----
 
@@ -135,19 +135,19 @@ Create the PV and check it's status with the `get` and `describe` command.
 
 ```
 $ kubectl create -f pv.yaml
-$ kubectl get pv
-$ kubectl describe pv
+$ kubectl get pv pv-$HOSTNAME
+$ kubectl describe pv-$HOSTNAME
 ```
 
 ----
 
-Next we need to create a PVC which claims the PV defined above. The definition of this is given below.
+Next we need to create a PVC which claims the PV defined above. Crate a file `pvc.yaml` with the following contents, replacing <MY_PVC_NAME> with the output of `echo pvc-$HOSTNAME`. 
 
 ```
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: myclaim
+  name: <MY_PVC_NAME>
 spec:
   accessModes:
     - ReadWriteOnce
@@ -162,8 +162,8 @@ Create the PVC and check it's status with the `get` and `describe` command.
 
 ```
 $ kubectl create -f pvc.yaml
-$ kubectl get pvc
-$ kubectl describe pvc
+$ kubectl get pvc pvc-$HOSTNAME
+$ kubectl describe pvc-$HOSTNAME
 ```
 
 ----
