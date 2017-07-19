@@ -4,7 +4,6 @@ A Pod is made up of one or several containers plus some data volumes that can be
 
 * define a deployment backed by a emptyDir
 * define a deployment backed by a emptyDir(memory backed storage)
-* define a deployment backed by a hostPath 
 * define a deployment backed by a persistent volume and persistent volume claim 
 * define a deployment backed by a persistent volume and persistent volume claim using a StorageClass
 
