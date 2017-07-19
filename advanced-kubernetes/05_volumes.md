@@ -104,7 +104,7 @@ total 0
 
 * In this exercise we'll demonstrate the use of Persistent Volumes(PV) and Persistent Volume Claims(PVC).
 
-First we need to create Disk and then a PV, otherwise we won't have anything to claim.
+First we will create a disk and a PV that we will later claim and use with a Pod
 ```
 $ gcloud compute disks create [DISK_NAME] --size [DISK_SIZE] --type [DISK_TYPE]
 $ gcloud compute instances attach-disk [INSTANCE_NAME] --disk [DISK_NAME]
