@@ -107,8 +107,11 @@ total 0
 First we will create a disk and a PV that we will later claim and use with a Pod
 ```
 $ gcloud compute disks create [DISK_NAME] --size [DISK_SIZE] --type [DISK_TYPE]
-$ gcloud compute instances attach-disk [INSTANCE_NAME] --disk [DISK_NAME]
+$ gcloud compute disks create disk-$HOSTNAME --size 8GB --type pd-standard
 ```
+
+Create a file called `pv.yaml` with the following contents:
+
 ```
 apiVersion: v1
 kind: PersistentVolume
@@ -238,7 +241,7 @@ You might be interested to test this using this [example](https://github.com/kub
 
 ----
 
-First check and remove any existing persitent volumes
+First check and remove any existing persistent volumes
 
 ```
 $ kubectl get pv
