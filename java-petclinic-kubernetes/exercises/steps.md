@@ -127,7 +127,7 @@ kubectl apply -f petclinic.yaml
 
 Observe the creation of you objects using 
 ```bash
-watch kubectl service,deployment,pod
+watch kubectl get service,deployment,pod
 ```
 You will see that your pod is failing to start and is getting restarted by Kubernetes. Use
 ```bash
