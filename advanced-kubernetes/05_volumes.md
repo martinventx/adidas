@@ -169,7 +169,7 @@ $ kubectl describe pvc-$HOSTNAME
 
 ----
 
-Lastly we'll create a Pod and attach the PVC to it:
+Lastly we'll create a Pod and attach the PVC to it. Create the file `pod_pvc.yaml` with the following contents (replacing <MY_PVC_NAME> with the output of `echo pvc-$HOSTNAME`.
 
 ```
 apiVersion: v1
@@ -197,7 +197,7 @@ spec:
   volumes:
     - name: test
       persistentVolumeClaim:
-        claimName: myclaim
+        claimName: <MY_PVC_NAME>
 ```
 
 ----
