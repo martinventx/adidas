@@ -243,27 +243,14 @@ You might be interested to test this using this [example](https://github.com/kub
 
 ----
 
-First check and remove any existing persistent volumes
+GKE comes with a default StorageClass that will dynamically provision persitent disks on demand. We can see this by running:
 
 ```
-$ kubectl get pv
-NAME      CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS      CLAIM     STORAGECLASS   REASON    AGE
-pv0001    10Gi       RWO           Retain          Available                                      3s
-
-$ kubectl delete pv pv001
-persistentvolume "pv0001" deleted
+$ kubectl get storageclass
+...
+$ kubectl describe storageclass standard
+...
 ```
-
-----
-
-Create the storage class and verify via `get` command
-
-```
-$ kubectl apply -f <name>.yaml
-$ kubectl get sc
-```
-
-----
 
 Next we create a persistent volume claim including that storage class.
 
@@ -272,7 +259,7 @@ Next we create a persistent volume claim including that storage class.
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: mystorageclaim
+  name: <MY_SC_CLAIM>
   annotations:
     volume.beta.kubernetes.io/storage-class: "standard"
 spec:
