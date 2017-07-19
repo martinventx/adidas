@@ -40,7 +40,7 @@ CMD ["java", "-jar", "spring-petclinic-1.5.1.jar"]
 3. Build your Docker image
 
 ```bash
-docker build -t eu.gcr.io/adam-k8s/petclinic -t petclinic .
+docker build -t eu.gcr.io/$PROJECT/$HOSTNAME-petclinic -t petclinic .
 ```
 
 You can use `docker images | grep petclinic` to see your created image. The image name has to container the name
@@ -63,7 +63,7 @@ If you can access the application on `http://localhost:8080` then you can contin
 Use `gcloud` to push the image to the registry:
 
 ```bash
-gcloud docker -- push eu.gcr.io/adam-k8s/petclinic
+gcloud docker -- push eu.gcr.io/$PROJECT/$HOSTNAME-petclinic
 ```
 
 6. Run the application on Kubernetes
@@ -74,6 +74,8 @@ We will create a LoadBalancer Service for our Deployment which will in turn crea
 deployment will configure the PetClinic app to activate the mysql Spring profile. It will also configure database
 access. Note the URL to the MySQL server (spring_datasource_url). MySQL is accessed using a DNS name, no need for
 IP addresses inside the cluster.
+
+**Make sure you alter the image name to include your `echo $PROJECT` and `echo $HOSTNAME`**
  
 ```yaml
 apiVersion: v1
@@ -100,7 +102,7 @@ spec:
         app: petclinic
     spec:
       containers:
-      - image: eu.gcr.io/adam-k8s/petclinic
+      - image: eu.gcr.io/<YOUR_PROJECT>/<YOUR_HOSTNAME>-petclinic
         name: petclinic
         env:
         - name: "spring_profiles_active"
