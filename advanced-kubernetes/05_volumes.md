@@ -106,7 +106,6 @@ total 0
 
 First we will create a disk and a PV that we will later claim and use with a Pod
 ```
-$ gcloud compute disks create [DISK_NAME] --size [DISK_SIZE] --type [DISK_TYPE]
 $ gcloud compute disks create disk-$HOSTNAME --size 8GB --type pd-standard
 ```
 
@@ -124,9 +123,11 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   gcePersistentDisk:
-    pdName: "data"
+    pdName: <MY_DISK_NAME>
     fsType: "ext4"
 ```
+
+Note that you will need to replace <MY_DISK_NAME> with the name you used in the create command.
 
 ----
 
